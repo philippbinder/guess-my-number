@@ -21,35 +21,56 @@ document.querySelector('.check').addEventListener('click', function () {
   console.log('guess value:', document.querySelector('.guess').value);
 
   // No input in the input field: Valuie will be 0 & 0 is fasly -> fullfills !guess
-  // Make the font color of message red if !guess
+  // Change CSS when game ends - Style changes are applied as an inline style!
+
+  // When there is no input by the player
   if (!guess) {
     document.querySelector('.message').textContent =
       '⛔ No number entered. Please take a guess.';
-  } else if (guess === secretNumber) {
+  }
+  // Guess is correct
+  else if (guess === secretNumber) {
     document.querySelector('.message').textContent =
       '🥳 You guessed correctly! No need to waste your time anymore.';
     document.querySelector('.number').textContent = secretNumber;
-  } else if (guess > secretNumber) {
+    document.querySelector('body').style.backgroundColor = '#60b347';
+    document.querySelector('.number').style.width = '30rem';
+    document.querySelector('.number').style.color = 'gold';
+  }
+  // Guess is too high
+  else if (guess > secretNumber) {
     if (scoreNumber > 1) {
       document.querySelector('.message').textContent =
         '😭 Your guess was too high.';
       scoreNumber--;
       document.querySelector('.score').textContent = scoreNumber;
-    } else {
+    }
+    // Lose game
+    else {
       document.querySelector('.message').textContent = '💀 You lost the game!';
       document.querySelector('.score').textContent = 0;
       document.querySelector('.number').textContent = secretNumber;
+      document.querySelector('body').style.backgroundColor = 'red';
+      document.querySelector('.number').style.width = '30rem';
+      document.querySelector('.number').style.color = 'black';
     }
-  } else if (guess < secretNumber) {
+  }
+  // Guess is too low
+  else if (guess < secretNumber) {
     if (scoreNumber > 1) {
       document.querySelector('.message').textContent =
         '😭 Your guess was too low.';
       scoreNumber--;
       document.querySelector('.score').textContent = scoreNumber;
-    } else {
+    }
+    // Lose game
+    else {
       document.querySelector('.message').textContent = '💀 You lost the game!';
       document.querySelector('.score').textContent = 0;
       document.querySelector('.number').textContent = secretNumber;
+      document.querySelector('body').style.backgroundColor = 'red';
+      document.querySelector('.number').style.width = '30rem';
+      document.querySelector('.number').style.color = 'black';
     }
   }
 });
