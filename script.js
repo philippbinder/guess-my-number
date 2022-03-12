@@ -30,14 +30,26 @@ document.querySelector('.check').addEventListener('click', function () {
       '🥳 You guessed correctly! No need to waste your time anymore.';
     document.querySelector('.number').textContent = secretNumber;
   } else if (guess > secretNumber) {
-    document.querySelector('.message').textContent =
-      '😭 Your guess was too high.';
-    scoreNumber--;
-    document.querySelector('.score').textContent = scoreNumber;
+    if (scoreNumber > 1) {
+      document.querySelector('.message').textContent =
+        '😭 Your guess was too high.';
+      scoreNumber--;
+      document.querySelector('.score').textContent = scoreNumber;
+    } else {
+      document.querySelector('.message').textContent = '💀 You lost the game!';
+      document.querySelector('.score').textContent = 0;
+      document.querySelector('.number').textContent = secretNumber;
+    }
   } else if (guess < secretNumber) {
-    document.querySelector('.message').textContent =
-      '😭 Your guess was too low.';
-    scoreNumber--;
-    document.querySelector('.score').textContent = scoreNumber;
+    if (scoreNumber > 1) {
+      document.querySelector('.message').textContent =
+        '😭 Your guess was too low.';
+      scoreNumber--;
+      document.querySelector('.score').textContent = scoreNumber;
+    } else {
+      document.querySelector('.message').textContent = '💀 You lost the game!';
+      document.querySelector('.score').textContent = 0;
+      document.querySelector('.number').textContent = secretNumber;
+    }
   }
 });
