@@ -8,7 +8,7 @@
 // document.querySelector('.message').textContent = '🎉 Correct number!';
 
 // Create Number between 1 and 20 without decimals
-const secretNumber = Math.trunc(Math.random() * 20) + 1;
+let secretNumber = Math.trunc(Math.random() * 20) + 1;
 console.log('Secret number:', secretNumber);
 
 let scoreNumber = 20;
@@ -73,4 +73,22 @@ document.querySelector('.check').addEventListener('click', function () {
       document.querySelector('.number').style.color = 'black';
     }
   }
+});
+
+document.querySelector('.again').addEventListener('click', function () {
+  // Easy way, not part of the excercise
+  // location.reload();
+
+  scoreNumber = 20;
+  secretNumber = Math.trunc(Math.random() * 20) + 1;
+
+  console.log('Secret number:', secretNumber);
+
+  document.querySelector('.message').textContent = 'Start guessing...';
+  document.querySelector('.score').textContent = scoreNumber;
+  document.querySelector('.guess').value = '';
+  document.querySelector('.number').textContent = '?';
+  document.querySelector('.number').style.width = '15rem';
+  document.querySelector('.number').style.color = '#333';
+  document.querySelector('body').style.backgroundColor = '#222';
 });
